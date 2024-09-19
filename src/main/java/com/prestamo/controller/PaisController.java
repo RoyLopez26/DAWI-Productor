@@ -16,9 +16,11 @@ import com.prestamo.service.PaisService;
 @RequestMapping("/url/pais")
 public class PaisController {
 
-	@Autowired
-    private PaisService paisService;
+    private final PaisService paisService;
 
+    public PaisController(PaisService paisService) {
+        this.paisService = paisService;
+    }
 
     @GetMapping("/lista")
     public List<Pais> getAllPaises() {

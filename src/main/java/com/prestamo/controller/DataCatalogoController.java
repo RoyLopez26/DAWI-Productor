@@ -15,9 +15,12 @@ import com.prestamo.service.DataCatalogoService;
 @RequestMapping("/url/dataCatalogo")
 public class DataCatalogoController {
 
-	@Autowired
-	private DataCatalogoService service;
-	
+	private final DataCatalogoService service;
+
+    public DataCatalogoController(DataCatalogoService service) {
+        this.service = service;
+    }
+
     @GetMapping("/listar/{id}")
 	public List<DataCatalogo> listar(@PathVariable("id") int idCatalogo) {
 		return service.listaPorCatalogo(idCatalogo);
